@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""main flask application file"""
+
+"""The main flask app file"""
 
 from api.v1.views import app_views
 from flask import Flask
