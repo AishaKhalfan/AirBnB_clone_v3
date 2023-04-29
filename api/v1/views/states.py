@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-#!/usr/bin/pytho3
-"""Rrstful API actions for State"""
-=======
 #!/usr/bin/python3
 
-""" Handles all restful API actions for State"""
+""" This Handles all restful API actions for State"""
 
->>>>>>> origin/storage_get_count
+
 from api.v1.views import app_views
 from flask import request, jsonify, abort
 from models.state import State
