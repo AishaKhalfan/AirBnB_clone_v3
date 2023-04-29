@@ -1,5 +1,10 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """ index file for the app"""
+=======
+
+"""index file for flask app"""
+>>>>>>> origin/storage_get_count
 
 from api.v1.views import app_views
 from flask import jsonify
