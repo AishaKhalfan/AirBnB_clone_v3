@@ -114,10 +114,7 @@ class TestFileStorage(unittest.TestCase):
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/storage_get_count
 class TestNewMethodsDb(unittest.TestCase):
     """Test get and count methods in db_storage"""
 
