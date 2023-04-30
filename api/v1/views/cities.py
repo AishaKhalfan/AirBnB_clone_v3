@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" This Handles all restful API actions for State"""
+"""This handles all restful API actions for State"""
 
 from api.v1.views import app_views
 from flask import request, jsonify, abort
@@ -36,6 +36,7 @@ def cities_by_state(state_id):
                 city = City(**my_dict)
                 city.save()
                 return jsonify(city.to_dict()), 201
+        abort(404)
 
 
 @app_views.route('/cities/<string:city_id>',
@@ -47,11 +48,11 @@ def city_by_city_id(city_id):
         abort(404)
     if request.method == 'GET':
         return jsonify(city.to_dict())
-    elif request.method == 'DELETE':
+    if request.method == 'DELETE':
         storage.delete(city)
         storage.save()
         return jsonify({}), 200
-    elif request.method == 'PUT':
+    if request.method == 'PUT':
         my_dict = request.get_json()
         if my_dict is None:
             abort(400, 'Not a JSON')
