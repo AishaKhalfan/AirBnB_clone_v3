@@ -75,7 +75,7 @@ def delete_review(review_id):
 
 
 @app_views.route('/reviews/<review_id>', methods=['PUT'])
-def updates_review(review_id):
+def update_review(review_id):
     '''Updates a Review object'''
     all_reviews = storage.all("Review").values()
     review_obj = [obj.to_dict() for obj in all_reviews if obj.id == review_id]
@@ -90,4 +90,3 @@ def updates_review(review_id):
                 obj.text = request.json['text']
         storage.save()
     return jsonify(review_obj[0]), 200
-
