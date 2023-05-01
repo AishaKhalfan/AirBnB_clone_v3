@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This is the module for review view
+The module for review view
 """
 from flask import jsonify, abort, request
 from models import storage, classes
@@ -11,7 +11,7 @@ from api.v1.views import app_views
 @app_views.route('/places/<place_id>/reviews', methods=['GET'])
 def all_reviews(place_id):
     """
-    This returns all reviews given a place's id
+    returns all reviews given a place's id
     """
     reviews = []
     my_dict = storage.all('Review')
@@ -38,7 +38,7 @@ def single_review(review_id):
 @app_views.route('reviews/<review_id>', methods=['DELETE'])
 def delete_review(review_id):
     """
-    deletes a review given its id
+    It deletes a review given its id
     """
     to_remove = storage.get("Review", review_id)
     if to_remove is not None:
@@ -51,7 +51,7 @@ def delete_review(review_id):
 @app_views.route('/places/<place_id>/reviews', methods=['POST'])
 def post_review(place_id):
     """
-    creates a new review object from a place id
+    Thiscreates a new review object from a place id
     """
     data = request.get_json()
     check_place = storage.get("Place", place_id)
@@ -77,7 +77,7 @@ def post_review(place_id):
 @app_views.route('/reviews/<review_id>', methods=['PUT'])
 def put_review(review_id):
     """
-    updates a review given its id
+    Thisupdates a review given its id
     """
     data = request.get_json()
     my_review = storage.get("Review", review_id)
