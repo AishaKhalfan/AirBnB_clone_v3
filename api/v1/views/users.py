@@ -1,8 +1,5 @@
-
 #!/usr/bin/python3
-
 """This View Handles all RESTful API actions for User"""
-
 from api.v1.views import app_views
 from flask import request, jsonify, abort
 from models.user import User
