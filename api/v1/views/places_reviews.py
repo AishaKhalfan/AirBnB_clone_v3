@@ -13,11 +13,9 @@ import uuid
 @app_views.route('/places/<place_id>/reviews/', methods=['GET'])
 def list_reviews_of_place(place_id):
     ''' Retrieves a list of all Review objects of a Place '''
-    all_places = storage.all("Place").values()
-    place_obj = [obj.to_dict() for obj in all_places if obj.id == place_id]
-    if place_obj == []:
+    place_obj = storage.get("Place", place_id)
+    if place_obj is None:
         abort(404)
-    list_reviews = [obj.to_dict() for obj in storage.all("Review").values()
                     if place_id == obj.place_id]
     return jsonify(list_reviews)
 
