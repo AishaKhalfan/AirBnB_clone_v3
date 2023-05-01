@@ -13,9 +13,11 @@ import uuid
 @app_views.route('/places/<place_id>/reviews/', methods=['GET'])
 def list_reviews_of_place(place_id):
     ''' Retrieves a list of all Review objects of a Place '''
-    place_obj = storage.get("Place", place_id)
-    if place_obj is None:
+    all_places = storage.all("Place").values()
+    place_obj = [obj.to_dict() for obj in all_places if obj.id == place_id]
+    if place_obj == []:
         abort(404)
+    list_reviews = [obj.to_dict() for obj in storage.all("Review").values()
                     if place_id == obj.place_id]
     return jsonify(list_reviews)
 
@@ -73,7 +75,7 @@ def delete_review(review_id):
 
 
 @app_views.route('/reviews/<review_id>', methods=['PUT'])
-def update_review(review_id):
+def updates_review(review_id):
     '''Updates a Review object'''
     all_reviews = storage.all("Review").values()
     review_obj = [obj.to_dict() for obj in all_reviews if obj.id == review_id]
