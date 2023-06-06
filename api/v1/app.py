@@ -11,7 +11,7 @@ from models import storage
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
-CORS(app, resources={r"/*":{"origin":"0.0.0.0"}})
+CORS(app, resources={r"/*": {"origin": "0.0.0.0"}})
 
 
 @app.teardown_appcontext
